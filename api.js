@@ -59,5 +59,16 @@ router.post('/create-task', function (req, res) {
     });
 });
 
+router.get('/all-tasks', function (req, res) {
+    TaskModel.find(function (err, data) {
+        if (err) {
+            res.status(500).send("Internal error\n");
+        }
+        else {
+            res.status(200).send(data);
+        }
+    });
+});
+
 module.exports = router;
 
